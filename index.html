@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss PACSonWEB | Cloud PACS for Radiology | Full PACS Anywhere, Anytime</title>
+<meta name="description" content="Swiss PACSonWEB — Full PACS functionality anywhere, anytime, on any device. Cloud-based, Swiss Tier 4 data centre, GDPR compliant. Lite from $590/month. A RadiologyCheck cloud service.">
+<link rel="canonical" href="https://swisspacsonweb.com">
+<meta property="og:title" content="Swiss PACSonWEB — Full Cloud PACS, Anywhere, Anytime">
+<meta property="og:description" content="Full PACS functionality on any device. Swiss Tier 4 data centre, GDPR compliant, 50% lower TCO. Powered by Swisscom Health. A RadiologyCheck cloud service.">
+<meta property="og:url" content="https://swisspacsonweb.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Swiss PACSonWEB — Full Cloud PACS">
+<meta name="twitter:description" content="Full PACS functionality on any device. Swiss Tier 4, GDPR compliant, 50% lower TCO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --slate:#4c5563;--sky:#a0c2dc;--sky-lt:#d4e8f4;--sky-pale:#eef6fb;
+  --teal:#3da89a;--teal-lt:#e8f7f5;--teal-dk:#2d8f83;
+  --charcoal:#2d3540;--mid:#6b7a8d;--border:#dde8f0;
+  --white:#fff;--off:#f7fafc;--red:#cc0000;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --sh-md:0 4px 20px rgba(44,53,64,.12);
+  --sh-lg:0 20px 60px rgba(44,53,64,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--slate);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;transition:box-shadow .3s}
+.nav-logo svg{height:28px;width:auto}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:white;font-size:13px;font-weight:500;padding:9px 20px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 3px 12px rgba(61,168,154,.25)}
+.nav-cta:hover{background:var(--teal-dk);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;padding-top:64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-5%;right:-5%;width:60vw;height:110vh;background:radial-gradient(ellipse 65% 75% at 65% 40%,rgba(61,168,154,.08) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 60%,var(--sky) 60%,var(--sky) 100%)}
+
+.hero-left{padding:64px 52px 64px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;animation:fadeUp .8s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.swiss-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;background:rgba(61,168,154,.12);border:1px solid rgba(61,168,154,.25);border-radius:100px;padding:6px 16px;width:fit-content}
+.sw-cross{width:17px;height:17px;background:var(--red);border-radius:2px;position:relative;flex-shrink:0}
+.sw-cross::before,.sw-cross::after{content:'';position:absolute;background:white}
+.sw-cross::before{width:10px;height:4px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.sw-cross::after{width:4px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.swiss-badge span{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+
+/* Use case pills */
+.use-cases{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.uc-pill{background:rgba(61,168,154,.1);border:1px solid rgba(61,168,154,.25);color:rgba(255,255,255,.6);font-size:12px;font-weight:300;padding:5px 12px;border-radius:100px;letter-spacing:.01em}
+
+.hero h1{font-family:var(--serif);font-size:clamp(36px,3.8vw,58px);line-height:1.06;letter-spacing:-.02em;color:white;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--sky)}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.52);line-height:1.7;max-width:420px;margin-bottom:30px}
+
+.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:40px}
+.btn-teal{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:white;font-size:15px;font-weight:500;padding:13px 26px;border-radius:4px;text-decoration:none;box-shadow:0 4px 18px rgba(61,168,154,.3);transition:all .2s}
+.btn-teal:hover{background:var(--teal-dk);transform:translateY(-2px)}
+.btn-ghost{color:rgba(255,255,255,.4);font-size:14px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:all .2s}
+.btn-ghost:hover{color:white;border-color:rgba(255,255,255,.45)}
+
+.hero-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:26px;gap:0}
+.stat{padding-right:20px;margin-right:20px;border-right:1px solid rgba(255,255,255,.07)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--serif);font-size:22px;color:white;letter-spacing:-.03em;line-height:1.1}
+.stat-l{font-size:10px;font-weight:300;color:rgba(255,255,255,.3);letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
+
+/* HERO RIGHT — PACS visual */
+.hero-right{display:flex;align-items:center;justify-content:center;padding:40px 60px 40px 20px;position:relative;z-index:2;animation:fadeUp .8s .15s ease both;opacity:0;animation-fill-mode:forwards}
+.pacs-visual{position:relative;width:100%;max-width:420px}
+.pacs-screens{display:flex;flex-direction:column;gap:14px}
+.pacs-screen{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.pacs-screen.mini{max-width:280px;margin-left:auto}
+.pacs-screen-header{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.07)}
+.pacs-screen-header span{font-size:12px;color:rgba(255,255,255,.45);font-weight:300}
+.pacs-screen-body{padding:18px 16px}
+.scan-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.scan-thumb{background:rgba(160,194,220,.08);border:1px solid rgba(160,194,220,.12);border-radius:6px;height:80px;position:relative;overflow:hidden}
+.scan-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(61,168,154,.06),rgba(160,194,220,.1));animation:scanPulse 3s ease infinite}
+@keyframes scanPulse{0%,100%{opacity:.4}50%{opacity:1}}
+.scan-info{display:flex;flex-direction:column;gap:6px}
+.scan-line{height:6px;border-radius:3px;background:rgba(255,255,255,.06)}
+.scan-line.w80{width:80%}.scan-line.w60{width:60%}.scan-line.w40{width:40%}
+.ai-bars{display:flex;flex-direction:column;gap:8px;padding:4px 0}
+.ai-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--sky));opacity:.5;animation:barGrow 2s ease both}
+@keyframes barGrow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+.pacs-badge-float{position:absolute;bottom:-10px;right:-10px;background:var(--teal);color:white;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(61,168,154,.35);text-align:center;z-index:3}
+.pacs-badge-float .big{font-family:var(--serif);font-size:22px;display:block;letter-spacing:-.02em}
+.pacs-badge-float .sm{font-size:10px;font-weight:300;opacity:.8;letter-spacing:.03em;text-transform:uppercase}
+
+/* TRUST BAR */
+.trust-bar{background:var(--teal);padding:14px 60px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.tb-item{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:white}
+.tb-check{width:18px;height:18px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tb-sep{width:1px;height:18px;background:rgba(255,255,255,.2)}
+
+/* SECTION BASE */
+section{padding:80px 80px}
+.sk{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:12px}
+.sh{font-family:var(--serif);font-size:clamp(28px,3vw,46px);line-height:1.1;letter-spacing:-.02em;color:var(--charcoal);margin-bottom:14px}
+.sh em{font-style:italic;color:var(--sky)}
+.sh.wh{color:white}
+.sp{font-size:16px;font-weight:300;color:var(--mid);line-height:1.7;max-width:520px}
+.sp.wh{color:rgba(255,255,255,.5)}
+
+/* WHO NEEDS THIS */
+.who{background:var(--off)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.who-card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px 20px;transition:all .25s}
+.who-card:hover{box-shadow:var(--sh-md);transform:translateY(-2px);border-color:rgba(61,168,154,.3)}
+.who-ico{font-size:26px;margin-bottom:12px;display:block}
+.who-card h3{font-size:15px;font-weight:500;color:var(--charcoal);margin-bottom:6px;line-height:1.3}
+.who-card ul{list-style:none;display:flex;flex-direction:column;gap:5px;padding:0}
+.who-card ul li{font-size:13px;font-weight:300;color:var(--mid);display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.who-card ul li::before{content:'·';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* DR CHARIMO SECTION */
+.charimo-section{background:var(--charcoal);padding:80px 80px;position:relative;overflow:hidden}
+.charimo-section::before{content:'';position:absolute;bottom:-20%;right:-5%;width:50%;height:110%;background:radial-gradient(ellipse,rgba(61,168,154,.07) 0%,transparent 65%)}
+.charimo-grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:start;position:relative;z-index:1;max-width:800px}
+.charimo-photo-wrap{position:relative;width:fit-content}
+.charimo-photo{width:300px;height:360px;object-fit:cover;object-position:center 15%;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.35);display:block}
+.charimo-badge{position:absolute;bottom:-14px;right:-14px;background:var(--teal);color:white;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(61,168,154,.35);text-align:center}
+.charimo-badge .big{font-family:var(--serif);font-size:22px;display:block;letter-spacing:-.02em}
+.charimo-badge .sm{font-size:10px;font-weight:300;opacity:.8;letter-spacing:.03em;text-transform:uppercase}
+
+.charimo-content h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,42px);color:white;line-height:1.1;letter-spacing:-.02em;margin-bottom:5px}
+.charimo-content h2 em{font-style:italic;color:var(--sky)}
+.charimo-title{font-size:13px;color:var(--teal);margin-bottom:16px;letter-spacing:.01em}
+.charimo-bio{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:20px;max-width:460px}
+
+/* Diplomas grid */
+.diplomas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.diploma-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:9px}
+.diploma-card::before{content:'✓';color:var(--teal);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+.diploma-card span{font-size:12px;font-weight:400;color:rgba(255,255,255,.7);line-height:1.4}
+
+.key-point{
+  background:rgba(61,168,154,.1);border:1px solid rgba(61,168,154,.2);
+  border-radius:10px;padding:16px 20px;
+  font-size:15px;font-weight:300;color:rgba(255,255,255,.75);
+  line-height:1.6;font-style:italic;
+  border-left:3px solid var(--teal);
+}
+
+/* BODY REGIONS */
+.regions{background:white}
+.regions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.region-card{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:10px;padding:20px 16px;
+  text-align:center;transition:all .25s;cursor:default;
+}
+.region-card:hover{border-color:var(--teal);box-shadow:var(--sh-md);background:var(--teal-lt)}
+.region-ico{font-size:28px;margin-bottom:10px;display:block}
+.region-name{font-size:14px;font-weight:500;color:var(--charcoal);margin-bottom:4px}
+.region-detail{font-size:12px;font-weight:300;color:var(--mid)}
+
+/* HOW IT WORKS */
+.how{background:var(--off)}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;position:relative}
+.how-steps::before{content:'';position:absolute;top:27px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:1px;background:linear-gradient(90deg,var(--teal),var(--sky))}
+.how-step{text-align:center}
+.step-num{width:54px;height:54px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--serif);font-size:22px;color:white;box-shadow:0 4px 16px rgba(61,168,154,.3);position:relative;z-index:1}
+.how-step h3{font-size:15px;font-weight:500;color:var(--charcoal);margin-bottom:7px}
+.how-step p{font-size:13px;font-weight:300;color:var(--mid);line-height:1.6}
+
+/* VIDEO SECTION */
+.video-section{background:white}
+.video-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:44px}
+.vid-card{background:var(--charcoal);border:1px solid rgba(160,194,220,.15);border-radius:12px;overflow:hidden;box-shadow:var(--sh-lg)}
+.vid-header{padding:12px 16px;display:flex;align-items:center;gap:9px;border-bottom:1px solid rgba(255,255,255,.07)}
+.live-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.vid-header span{font-size:13px;color:rgba(255,255,255,.5);font-weight:300}
+.vid-wrap{position:relative;background:#0d1520}
+video{width:100%;display:block}
+.vid-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(45,53,64,.5),rgba(13,21,32,.8));cursor:pointer;gap:10px;transition:opacity .3s}
+.vid-overlay.hidden{opacity:0;pointer-events:none}
+.play-ring{width:56px;height:56px;border-radius:50%;background:rgba(61,168,154,.85);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.play-ring:hover{background:var(--teal);transform:scale(1.08)}
+.play-ring svg{margin-left:4px}
+.overlay-txt{font-size:13px;color:rgba(255,255,255,.55);font-weight:300}
+.vid-right h3{font-family:var(--serif);font-size:28px;color:var(--charcoal);margin-bottom:12px;line-height:1.2}
+.vid-right h3 em{font-style:italic;color:var(--teal)}
+.vid-steps{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.vid-step{display:flex;gap:14px;align-items:flex-start}
+.vs-num{width:28px;height:28px;background:var(--teal);border-radius:50%;font-size:13px;font-weight:500;color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.vid-step h4{font-size:14px;font-weight:500;color:var(--charcoal);margin-bottom:3px}
+.vid-step p{font-size:13px;font-weight:300;color:var(--mid);line-height:1.5}
+.pdf-row{display:flex;align-items:center;gap:14px;background:var(--off);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-top:22px}
+.pdf-ico{width:36px;height:36px;background:rgba(204,0,0,.08);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pdf-row-txt{flex:1}
+.pdf-row-txt p{font-size:13px;font-weight:500;color:var(--charcoal)}
+.pdf-row-txt span{font-size:11px;font-weight:300;color:var(--mid)}
+.btn-pdf{font-size:12px;font-weight:500;color:var(--teal);text-decoration:none;white-space:nowrap;border:1px solid rgba(61,168,154,.3);padding:6px 12px;border-radius:4px;transition:all .2s}
+.btn-pdf:hover{background:var(--teal-lt);border-color:var(--teal)}
+
+/* REVIEW */
+.review-section{background:var(--charcoal);padding:72px 80px}
+.review-inner{max-width:760px;margin:0 auto;text-align:center}
+.stars{color:#f5c842;font-size:20px;margin-bottom:20px;letter-spacing:3px}
+.review-quote{
+  font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);
+  color:white;line-height:1.5;letter-spacing:-.01em;
+  font-style:italic;margin-bottom:24px;
+}
+.review-quote em{color:var(--sky);font-style:normal}
+.review-meta{font-size:13px;font-weight:300;color:rgba(255,255,255,.4)}
+.review-meta strong{color:rgba(255,255,255,.7);font-weight:500}
+
+/* PRICING */
+.pricing{background:var(--off)}
+.price-top{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-bottom:44px;align-items:end}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.price-card{background:white;border:1px solid var(--border);border-radius:12px;padding:30px 24px;position:relative;transition:all .3s}
+.price-card:hover{box-shadow:var(--sh-lg);transform:translateY(-3px)}
+.price-card.feat{background:var(--charcoal);border-color:var(--slate)}
+.feat-lbl{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--teal);color:white;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:3px 13px;border-radius:100px;white-space:nowrap}
+.price-tier{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.price-time{font-size:12px;color:var(--sky);margin-bottom:18px}
+.price-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.price-feats li{font-size:13px;font-weight:300;color:var(--slate);display:flex;align-items:flex-start;gap:9px;line-height:1.4}
+.price-card.feat .price-feats li{color:rgba(255,255,255,.65)}
+.price-feats li::before{content:'';width:14px;height:14px;flex-shrink:0;margin-top:1px;background:var(--teal-lt);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3L3 5L7 1' stroke='%233da89a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.price-btn{display:block;text-align:center;padding:11px;border-radius:4px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s}
+.pb-def{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(61,168,154,.25)}
+.pb-def:hover{background:rgba(61,168,154,.15)}
+.pb-feat{background:var(--teal);color:white}
+.pb-feat:hover{background:var(--teal-dk)}
+
+/* FINAL CTA */
+.final{background:var(--teal);padding:88px 80px;text-align:center;position:relative;overflow:hidden}
+.final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%)}
+.final h2{font-family:var(--serif);font-size:clamp(30px,3.5vw,52px);color:white;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px;position:relative;z-index:1}
+.final h2 em{font-style:italic;color:rgba(255,255,255,.75)}
+.final p{font-size:16px;font-weight:300;color:rgba(255,255,255,.7);max-width:440px;margin:0 auto 34px;line-height:1.65;position:relative;z-index:1}
+.final-btns{display:flex;gap:14px;justify-content:center;align-items:center;position:relative;z-index:1;flex-wrap:wrap}
+.btn-white{background:white;color:var(--teal);display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;padding:13px 26px;border-radius:4px;text-decoration:none;transition:all .2s}
+.btn-white:hover{background:var(--teal-lt);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.15)}
+.btn-outline-wh{color:rgba(255,255,255,.65);font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.3);padding:13px 26px;border-radius:4px;transition:all .2s}
+.btn-outline-wh:hover{color:white;border-color:rgba(255,255,255,.7)}
+
+/* FOOTER */
+footer{background:var(--charcoal);padding:48px 80px 32px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+.footer-logo svg{height:24px;margin-bottom:12px;display:block}
+.footer-tag{font-size:13px;font-weight:300;color:rgba(255,255,255,.28);line-height:1.7;max-width:260px}
+.footer-sw{display:flex;align-items:center;gap:7px;margin-top:12px}
+.fw-cross{width:14px;height:14px;background:var(--red);border-radius:1px;position:relative;flex-shrink:0}
+.fw-cross::before,.fw-cross::after{content:'';position:absolute;background:white}
+.fw-cross::before{width:8px;height:3px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.fw-cross::after{width:3px;height:8px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.footer-sw span{font-size:11px;color:rgba(255,255,255,.2)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{font-size:13px;font-weight:300;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.18);font-weight:300}
+.footer-legal{display:flex;gap:18px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,.18);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:rgba(255,255,255,.5)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav{padding:0 32px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:88px 40px 40px}
+  .hero-right{padding:32px 40px}
+  section{padding:64px 40px}
+  .who-grid,.regions-grid{grid-template-columns:repeat(2,1fr)}
+  .how-steps{grid-template-columns:1fr;gap:32px}
+  .how-steps::before{display:none}
+  .charimo-grid,.video-inner,.price-top{grid-template-columns:1fr;gap:36px}
+  .charimo-photo{width:100%;height:300px}
+  .price-grid{grid-template-columns:1fr}
+  .diplomas-grid{grid-template-columns:1fr}
+  footer{padding:40px 32px 24px}
+  .trust-bar{padding:14px 32px;gap:16px}
+}
+@media(max-width:680px){
+  nav{padding:0 20px}
+  section{padding:52px 24px}
+  .who-grid,.regions-grid{grid-template-columns:1fr}
+  .final-btns{flex-direction:column}
+  .footer-inner{flex-direction:column}
+}
+
+  .who-ico-svg{width:44px;height:44px;background:var(--teal-lt);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0}
+  .who-ico{font-size:0;display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo" style="display:flex;align-items:center;gap:18px">
+    <a href="https://www.radiologycheck.com/en/cloud-services" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+    <svg viewBox="0 0 193.01 61.46" xmlns="http://www.w3.org/2000/svg">
+      <defs><style>.l1{fill:#4c5563}.l2{fill:#a0c2dc}
+  .who-ico-svg{width:44px;height:44px;background:var(--teal-lt);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0}
+  .who-ico{font-size:0;display:none}
+</style></defs>
+      <g><path class="l2" d="M32.95,43.51c.21.28.34.6.35.96.04,1.61-2.65,2.31-5.26,2.98l-.68.18c-2.87.76-6.48,1.88-9.05,3.76-.55.4-.9,1.01-.98,1.68-.01.1-.02.21-.01.31l-.14-.15c-.94-1.04-.37-2.38.37-2.93,3-2.19,8.23-3.17,10.43-3.6,2.83-.55,5.62-1.2,4.97-3.21Z"/><path class="l2" d="M38.59,20.54c-.2,2.35-1.83,3.69-2.81,4.4-2.24,1.63-6.35,2.71-8.35,3.62-2.01.91-5.1,2.88-4.42,6.26.11.56.36,1.05.71,1.47-.79-.61-1.35-1.35-1.53-2.27-.67-3.34,2.21-5.41,4.76-6.57.71-.32,1.71-.66,2.77-1.02,2.33-.79,5.22-1.77,6.97-3.24.76-.64,1.33-1.37,1.71-2.18.08-.16.14-.33.2-.49Z"/></g>
+      <g><path class="l1" d="M21.02,17.3V4.3h9.89c2.03,0,3.68,1.65,3.68,3.68h0c0,.74-.14,1.47-.45,2.14-.99,2.17-4.03,6.27-13.12,7.17Z"/><path class="l1" d="M9.71,33.74h-5.41v-9.67c0-1.88,1.53-3.41,3.41-3.41h5.48s-3.75,2.76-3.92,7.17c-.14,3.69.44,5.9.44,5.9Z"/></g>
+      <path class="l1" d="M38.13,20.1c-.35.75-.89,1.46-1.63,2.08-2.57,2.15-7.67,3.28-10.1,4.39-2.43,1.1-6.16,3.47-5.34,7.57.83,4.1,7.62,5.05,11.07,6.58,3.45,1.53,3.29,4.1,2.73,5.22-1.7,3.45-9.71,6.01-14.42,11.23l-1.82-1.84c-.75-.8-.64-2.06.22-2.74,2.62-2.07,6.46-3.33,9.02-4.11,3.09-.94,6.6-1.79,6.45-4.11-.16-2.39-3.67-3.2-6.95-3.78-3.1-.55-9.99-1.81-9.96-7.68.04-7.84,10.64-9.96,15.53-12.24.68-.32,1.24-.67,1.72-1.04,2.81-2.17,2.52-5.02,2.47-5.38,0,0,.02,0,.03,0,.19.24.37.49.52.74,1.03,1.69,1.18,3.51.45,5.1Z"/>
+      <path class="l1" d="M58.28,17.04c0,2.63-1.15,4.29-3.45,4.98l4.18,5.8h-3.43l-3.81-5.37h-3.54v5.37h-2.69v-15.96h5.94c2.44,0,4.18.41,5.23,1.23,1.05.82,1.58,2.14,1.58,3.95ZM54.69,19.3c.55-.47.82-1.23.82-2.27s-.28-1.76-.85-2.15c-.56-.39-1.57-.58-3.01-.58h-3.43v5.71h3.36c1.52,0,2.56-.24,3.11-.71Z"/>
+      <path class="l1" d="M98.68,11.85h2.69v15.96h-2.69v-15.96Z"/>
+      <path class="l2" d="M53.58,47.09c.89,0,1.66-.15,2.3-.45.64-.3,1.32-.78,2.02-1.44l1.67,1.71c-1.62,1.8-3.59,2.7-5.91,2.7s-4.24-.75-5.77-2.24c-1.53-1.49-2.29-3.38-2.29-5.66s.78-4.18,2.34-5.7c1.56-1.52,3.52-2.28,5.9-2.28s4.36.88,5.95,2.63l-1.64,1.8c-.73-.7-1.42-1.19-2.07-1.47-.65-.28-1.41-.42-2.29-.42-1.55,0-2.85.5-3.9,1.5-1.05,1-1.58,2.28-1.58,3.84s.52,2.86,1.57,3.9c1.04,1.05,2.28,1.57,3.72,1.57Z"/>
+      <path class="l2" d="M63.27,49.61v-15.86h2.68v6.88h7.87v-6.88h2.68v15.86h-2.68v-6.49h-7.87v6.49h-2.68Z"/>
+      <path class="l2" d="M91.88,33.75v2.49h-8.37v4.15h7.52v2.36h-7.52v4.2h8.64v2.49h-11.29v-15.69h11.02Z"/>
+      <path class="l2" d="M102.74,47.09c.89,0,1.66-.15,2.3-.45.64-.3,1.32-.78,2.02-1.44l1.67,1.71c-1.62,1.8-3.59,2.7-5.91,2.7s-4.24-.75-5.77-2.24c-1.53-1.49-2.29-3.38-2.29-5.66s.78-4.18,2.34-5.7c1.56-1.52,3.52-2.28,5.9-2.28s4.36.88,5.95,2.63l-1.64,1.8c-.73-.7-1.42-1.19-2.07-1.47-.65-.28-1.41-.42-2.29-.42-1.55,0-2.85.5-3.9,1.5-1.05,1-1.58,2.28-1.58,3.84s.52,2.86,1.57,3.9c1.04,1.05,2.28,1.57,3.72,1.57Z"/>
+      <path class="l2" d="M112.43,33.74h2.68v7.74l7.27-7.74h3.41l-6.38,6.95,6.47,8.92h-3.18l-5.27-6.95-2.32,2.5v4.45h-2.68v-15.87Z"/>
+    </svg>
+    <span style="font-size:11px;color:var(--mid);font-weight:400;letter-spacing:.03em;border-left:1px solid var(--border);padding-left:14px;line-height:1.3">Powered by<br><strong style="color:var(--charcoal);font-weight:500">RadiologyCheck</strong></span>
+    </a>
+  </div>
+  <a href="https://www.radiologycheck.com/en/cloud-services" class="nav-cta">
+    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+    Request Demo
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="swiss-badge">
+      <div class="sw-cross"></div>
+      <span>Swiss Made · Tier 4 Data Centre · GDPR Compliant</span>
+    </div>
+    <div class="use-cases">
+      <span class="uc-pill">☁️ Full Cloud PACS</span>
+      <span class="uc-pill">🔒 Swiss Tier 4 Security</span>
+      <span class="uc-pill">📱 Any Device · Any Browser</span>
+      <span class="uc-pill">🤖 AI Marketplace Integrated</span>
+      <span class="uc-pill">🏥 Cross-Hospital Collaboration</span>
+      <span class="uc-pill">💰 50% Lower TCO vs Local PACS</span>
+    </div>
+    <h1>Full PACS.<br>Anywhere.<br><em>Anytime.</em></h1>
+    <p class="hero-sub">Swiss PACSonWEB delivers full PACS functionality on any internet-connected device. Cloud-based, Swiss Tier 4 data centre, zero installation. Managed service from $590/month — reduce total cost of ownership by up to 50%.</p>
+    <div class="hero-ctas">
+      <a href="https://www.radiologycheck.com/en/cloud-services" class="btn-teal">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        Learn More →
+      </a>
+      <a href="#why" class="btn-ghost">See why PACSonWEB ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">50%</div><div class="stat-l">Lower TCO</div></div>
+      <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">IT support</div></div>
+      <div class="stat"><div class="stat-n">Tier 4</div><div class="stat-l">Swiss data centre</div></div>
+      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Installation needed</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="pacs-visual">
+      <div class="pacs-screens">
+        <div class="pacs-screen main">
+          <div class="pacs-screen-header">
+            <div class="live-dot"></div>
+            <span>PACSonWEB Viewer</span>
+          </div>
+          <div class="pacs-screen-body">
+            <div class="scan-grid">
+              <div class="scan-thumb"></div>
+              <div class="scan-thumb"></div>
+              <div class="scan-thumb"></div>
+              <div class="scan-thumb"></div>
+            </div>
+            <div class="scan-info">
+              <div class="scan-line w80"></div>
+              <div class="scan-line w60"></div>
+              <div class="scan-line w40"></div>
+            </div>
+          </div>
+        </div>
+        <div class="pacs-screen mini">
+          <div class="pacs-screen-header">
+            <div class="live-dot"></div>
+            <span>AI Marketplace</span>
+          </div>
+          <div class="pacs-screen-body">
+            <div class="ai-bars">
+              <div class="ai-bar" style="width:85%"></div>
+              <div class="ai-bar" style="width:62%"></div>
+              <div class="ai-bar" style="width:74%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pacs-badge-float">
+        <div class="big">Tier 4</div>
+        <div class="sm">Swiss Cloud</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="tb-item"><div class="tb-check"><svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>Swisscom Cloud PACS</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item"><div class="tb-check"><svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>GDPR Compliant</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item"><div class="tb-check"><svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>Swiss Data Hosting</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item"><div class="tb-check"><svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>Swiss Tier 4 Data Centre</div>
+  <div class="tb-sep"></div>
+  <div class="tb-item"><div class="tb-check"><svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>24/7 Managed Service</div>
+</div>
+
+<!-- WHO NEEDS THIS -->
+<section class="who reveal" id="who">
+  <span class="sk">Who this is for</span>
+  <h2 class="sh">Replace your local PACS.<br><em>Simply connect.</em></h2>
+  <p class="sp">No installation. No IT department needed. No storage contracts. Just connect to the cloud and access full PACS functionality on any device — anywhere in the world.</p>
+  <div class="who-grid">
+    <div class="who-card reveal">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M12 3v13.5m-4.5-4.5L12 16.5l4.5-4.5"/></svg></div>
+      <h3>Hospitals &amp; Imaging Centres</h3>
+      <ul>
+        <li>Replace costly local PACS infrastructure</li>
+        <li>50% lower total cost of ownership</li>
+        <li>Cross-hospital sharing &amp; collaboration</li>
+      </ul>
+    </div>
+    <div class="who-card reveal d1">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg></div>
+      <h3>Radiologists &amp; Clinicians</h3>
+      <ul>
+        <li>Make diagnoses from any device, anywhere</li>
+        <li>Zero Footprint Viewer — no software needed</li>
+        <li>Work-from-anywhere flexibility</li>
+      </ul>
+    </div>
+    <div class="who-card reveal d2">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5M9 3.75H4.875C4.254 3.75 3.75 4.254 3.75 4.875v16.125M14.25 3.75h4.125c.621 0 1.125.504 1.125 1.125v16.125M9 12h6M9 16.5h6M9 7.5h6"/></svg></div>
+      <h3>GP &amp; Referring Physicians</h3>
+      <ul>
+        <li>Access imaging results instantly via portal</li>
+        <li>No CD or DVD transfers needed</li>
+        <li>Send reports anywhere with ease</li>
+      </ul>
+    </div>
+    <div class="who-card reveal">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+      <h3>IT Departments</h3>
+      <ul>
+        <li>No installation, backups or updates</li>
+        <li>Fully managed by Swisscom Health partner</li>
+        <li>Automatic updates — always latest version</li>
+      </ul>
+    </div>
+    <div class="who-card reveal d1">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg></div>
+      <h3>Multi-Site Organisations</h3>
+      <ul>
+        <li>Single system, single viewer for all sites</li>
+        <li>Centralised cloud PACS — no duplication</li>
+        <li>Scalable storage — pay only for what you use</li>
+      </ul>
+    </div>
+    <div class="who-card reveal d2">
+      <div class="who-ico-svg"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#3da89a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></div>
+      <h3>AI-Ready Practices</h3>
+      <ul>
+        <li>Built-in AI marketplace — choose your AI tools</li>
+        <li>Preferred hanging protocols configurable</li>
+        <li>Future-proof cloud infrastructure</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DR CHARIMO -->
+<section class="charimo-section" id="why">
+  <div class="charimo-grid reveal">
+    <div class="charimo-photo-wrap">
+
+      <div class="charimo-badge">
+        <span class="big">50%</span>
+        <span class="sm">Lower TCO</span>
+      </div>
+    </div>
+    <div class="charimo-content">
+      <span class="sk">Your Expert</span>
+      <h2>Swiss PACSonWEB.<br><em>Simply tap into the cloud.</em></h2>
+      <div class="charimo-title">Powered by Swisscom Health · Swiss Made · Tier 4 Data Centre · GDPR Compliant</div>
+      <p class="charimo-bio">PACSonWEB delivers full PACS functionality on any internet-connected device. Because it's cloud and web-based, implementation is simple — no infrastructure, no storage contracts, no IT department support required. Reduces total cost of ownership by up to 50% compared to traditional local PACS. Functional and technical management handled by our partner SWISSCO, in close cooperation with your team.</p>
+      <div class="diplomas-grid">
+        <div class="diploma-card"><span>Zero Footprint Viewer (class 2a) — any browser</span></div>
+        <div class="diploma-card"><span>Swiss data centre Tier 4 — secure data storage</span></div>
+        <div class="diploma-card"><span>24/7 IT support in local language</span></div>
+        <div class="diploma-card"><span>AI marketplace — choose your preferred AI tools</span></div>
+        <div class="diploma-card"><span>Cross-hospital sharing &amp; collaboration</span></div>
+        <div class="diploma-card"><span>Direct integration with curaMED</span></div>
+      </div>
+      <div class="key-point">"Simplicity of a fully cloud-based infrastructure reduces total cost of ownership by as much as 50% compared to traditional local enterprise PACS implementations. You only pay for the applications and storage you use."</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STEP CLOUD APPROACH -->
+<section class="regions reveal" id="steps">
+  <span class="sk">Step-by-step approach</span>
+  <h2 class="sh">Enter the cloud.<br><em>At your own pace.</em></h2>
+  <p class="sp">A gradual transition tailored to your timeline — from adding a cloud layer to fully replacing your local PACS. We are by your side at every step.</p>
+  <div class="regions-grid" style="grid-template-columns:repeat(3,1fr);margin-top:44px">
+    <div class="region-card reveal" style="border-top:3px solid var(--teal);text-align:left;padding:28px 24px">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--teal);margin-bottom:12px;line-height:1">01</div>
+      <div class="region-name" style="font-size:16px;margin-bottom:8px">Add a cloud layer</div>
+      <div class="region-detail" style="line-height:1.6">Connect your existing local PACS to the cloud. Expand access to physicians and patients via portal. Eliminate CD/DVD transfers.</div>
+    </div>
+    <div class="region-card reveal d1" style="border-top:3px solid var(--sky);text-align:left;padding:28px 24px">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--sky);margin-bottom:12px;line-height:1">02</div>
+      <div class="region-name" style="font-size:16px;margin-bottom:8px">Move data to the cloud</div>
+      <div class="region-detail" style="line-height:1.6">Archive all imaging to Swiss PACSonWEB. Reduce dependence on local PACS. The PACSonWEB viewer becomes available across your entire organisation.</div>
+    </div>
+    <div class="region-card reveal d2" style="border-top:3px solid var(--red);text-align:left;padding:28px 24px">
+      <div style="font-family:var(--serif);font-size:36px;color:var(--red);margin-bottom:12px;line-height:1">03</div>
+      <div class="region-name" style="font-size:16px;margin-bottom:8px">Replace your PACS</div>
+      <div class="region-detail" style="line-height:1.6">Complete the transition. Select preferred AI tools, configure hanging protocols. Full cloud PACS — managed, maintained, always up to date.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how reveal" id="how">
+  <div style="text-align:center">
+    <span class="sk">The process</span>
+    <h2 class="sh" style="max-width:440px;margin:0 auto 10px">Three steps.<br><em>Complete clarity.</em></h2>
+    <p class="sp" style="max-width:420px;margin:0 auto">Simple, secure — from file submission to subspecialist report in 24–48 hours.</p>
+  </div>
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <div class="step-num">1</div>
+      <h3>Simply connect</h3>
+      <p>Simply install a gateway to connect your organisation. No software installation, no storage contracts, no IT department involvement required.</p>
+    </div>
+    <div class="how-step reveal d1">
+      <div class="step-num">2</div>
+      <h3>Data secured in Swiss cloud</h3>
+      <p>Your DICOM data is securely archived in the Swiss Tier 4 cloud. Our partner SWISSCO handles all technical management — you focus on imaging.</p>
+    </div>
+    <div class="how-step reveal d2">
+      <div class="step-num">3</div>
+      <h3>Full PACS — anywhere</h3>
+      <p>Access full PACS on any device via browser. Send reports, share images, collaborate across hospitals — no specialty viewers needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SHOWCASE -->
+<section class="video-section reveal" id="features">
+  <span class="sk">Platform features</span>
+  <h2 class="sh">Everything you need.<br><em>Nothing you don't.</em></h2>
+  <div class="video-inner">
+    <div class="vid-card">
+      <div class="vid-header">
+        <div class="live-dot"></div>
+        <span>PACSonWEB platform overview · demo</span>
+      </div>
+      <div class="vid-wrap">
+        <video id="rcVideo" preload="metadata" playsinline style="width:100%;display:block;background:#0d1520">
+          <source src="RC_upload_video.mp4" type="video/mp4">
+        </video>
+        <div class="vid-overlay" id="vidOverlay">
+          <div class="play-ring" onclick="playVideo()">
+            <svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <p class="overlay-txt">Click to watch platform demo</p>
+        </div>
+      </div>
+    </div>
+    <div class="vid-right">
+      <h3>Modern PACS.<br><em>Zero complexity.</em></h3>
+      <p class="sp" style="max-width:100%">See PACSonWEB in action — full PACS functionality on any device, cross-hospital collaboration, and the AI marketplace that keeps your workflow future-proof.</p>
+      <div class="vid-steps">
+        <div class="vid-step">
+          <div class="vs-num">1</div>
+          <div><h4>Connect your gateway</h4><p>Simply install a gateway device. No servers, no storage contracts, no IT overhead.</p></div>
+        </div>
+        <div class="vid-step">
+          <div class="vs-num">2</div>
+          <div><h4>Archive to Swiss cloud</h4><p>Data secured in Swiss Tier 4 data centre. GDPR compliant. Access expanded to your entire team.</p></div>
+        </div>
+        <div class="vid-step">
+          <div class="vs-num">3</div>
+          <div><h4>Full PACS — anywhere</h4><p>Full PACS functionality active — access from any device anywhere.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="review-section reveal">
+  <div class="review-inner" style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;text-align:center">
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(32px,3vw,48px);color:white;letter-spacing:-.03em;line-height:1">50%</div>
+      <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.5">Lower total cost of ownership vs traditional local PACS</div>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(32px,3vw,48px);color:white;letter-spacing:-.03em;line-height:1">0</div>
+      <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.5">Software installations required — runs on any browser, any device</div>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(32px,3vw,48px);color:white;letter-spacing:-.03em;line-height:1">24/7</div>
+      <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.5">Managed IT support in your local language</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing reveal" id="pricing">
+  <div class="price-top">
+    <div>
+      <span class="sk">Pricing</span>
+      <h2 class="sh">Transparent.<br><em>No surprises.</em></h2>
+    </div>
+    <p class="sp">Monthly subscription — no upfront costs, no storage contracts. All packages include 24/7 IT support in your local language. Prices in USD per month.</p>
+  </div>
+  <div class="price-grid">
+    <div class="price-card reveal">
+      <div class="price-tier">Lite</div>
+      <div class="price-time">1 user · 2.5 GB · 24/7 support</div>
+      <div style="font-family:var(--serif);font-size:40px;color:var(--charcoal);letter-spacing:-.03em;margin-bottom:18px">$590<span style="font-size:14px;color:var(--mid);font-family:var(--sans);font-weight:300">/month</span></div>
+      <ul class="price-feats">
+        <li>1 PACSonWEB user account</li>
+        <li>2.5 GB dedicated PACS cloud storage</li>
+        <li>Zero Footprint Viewer (class 2a)</li>
+        <li>24/7 IT support in local language</li>
+        <li>Swiss Tier 4 data centre</li>
+      </ul>
+      <a href="https://www.radiologycheck.com/en/cloud-services" class="price-btn pb-def">Get Started →</a>
+    </div>
+    <div class="price-card feat reveal d1">
+      <div class="feat-lbl">Most Popular</div>
+      <div class="price-tier">Standard</div>
+      <div class="price-time">5 users · 10 GB · 24/7 support</div>
+      <div style="font-family:var(--serif);font-size:40px;color:white;letter-spacing:-.03em;margin-bottom:18px">$1,970<span style="font-size:14px;color:rgba(255,255,255,.4);font-family:var(--sans);font-weight:300">/month</span></div>
+      <ul class="price-feats">
+        <li>5 PACSonWEB user accounts</li>
+        <li>10 GB dedicated PACS cloud storage</li>
+        <li>Zero Footprint Viewer (class 2a)</li>
+        <li>24/7 IT support in local language</li>
+        <li>AI marketplace access</li>
+      </ul>
+      <a href="https://www.radiologycheck.com/en/cloud-services" class="price-btn pb-feat">Get Started →</a>
+    </div>
+    <div class="price-card reveal d2">
+      <div class="price-tier">Professional</div>
+      <div class="price-time">20 users · Unlimited storage · 24/7 support</div>
+      <div style="font-family:var(--serif);font-size:40px;color:var(--charcoal);letter-spacing:-.03em;margin-bottom:18px">$2,980<span style="font-size:14px;color:var(--mid);font-family:var(--sans);font-weight:300">/month</span></div>
+      <ul class="price-feats">
+        <li>20 PACSonWEB user accounts</li>
+        <li>Unlimited cloud storage</li>
+        <li>Full AI marketplace integration</li>
+        <li>Cross-hospital sharing &amp; collaboration</li>
+        <li>Dedicated account manager · SLA</li>
+      </ul>
+      <a href="https://www.radiologycheck.com/en/cloud-services" class="price-btn pb-def">Contact Us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="contact">
+  <h2>Ready to move<br>your PACS<br><em>to the cloud?</em></h2>
+  <p>Contact us today to receive a demo and find out how Swiss PACSonWEB can reduce your costs by 50% while improving service to every user in your organisation.</p>
+  <div class="final-btns">
+    <a href="https://www.radiologycheck.com/en/cloud-services" class="btn-white">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      Request Demo
+    </a>
+    <a href="tel:+41795281875" class="btn-outline-wh">+41 79 528 18 75</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 193.01 61.46" xmlns="http://www.w3.org/2000/svg">
+          <path style="fill:rgba(255,255,255,.4)" d="M32.95,43.51c.21.28.34.6.35.96.04,1.61-2.65,2.31-5.26,2.98l-.68.18c-2.87.76-6.48,1.88-9.05,3.76-.55.4-.9,1.01-.98,1.68-.01.1-.02.21-.01.31l-.14-.15c-.94-1.04-.37-2.38.37-2.93,3-2.19,8.23-3.17,10.43-3.6,2.83-.55,5.62-1.2,4.97-3.21Z"/>
+          <path style="fill:white" d="M38.13,20.1c-.35.75-.89,1.46-1.63,2.08-2.57,2.15-7.67,3.28-10.1,4.39-2.43,1.1-6.16,3.47-5.34,7.57.83,4.1,7.62,5.05,11.07,6.58,3.45,1.53,3.29,4.1,2.73,5.22-1.7,3.45-9.71,6.01-14.42,11.23l-1.82-1.84c-.75-.8-.64-2.06.22-2.74,2.62-2.07,6.46-3.33,9.02-4.11,3.09-.94,6.6-1.79,6.45-4.11-.16-2.39-3.67-3.2-6.95-3.78-3.1-.55-9.99-1.81-9.96-7.68.04-7.84,10.64-9.96,15.53-12.24.68-.32,1.24-.67,1.72-1.04,2.81-2.17,2.52-5.02,2.47-5.38,0,0,.02,0,.03,0,.19.24.37.49.52.74,1.03,1.69,1.18,3.51.45,5.1Z"/>
+          <path style="fill:white" d="M58.28,17.04c0,2.63-1.15,4.29-3.45,4.98l4.18,5.8h-3.43l-3.81-5.37h-3.54v5.37h-2.69v-15.96h5.94c2.44,0,4.18.41,5.23,1.23,1.05.82,1.58,2.14,1.58,3.95ZM54.69,19.3c.55-.47.82-1.23.82-2.27s-.28-1.76-.85-2.15c-.56-.39-1.57-.58-3.01-.58h-3.43v5.71h3.36c1.52,0,2.56-.24,3.11-.71Z"/>
+          <path style="fill:rgba(160,194,220,.7)" d="M53.58,47.09c.89,0,1.66-.15,2.3-.45.64-.3,1.32-.78,2.02-1.44l1.67,1.71c-1.62,1.8-3.59,2.7-5.91,2.7s-4.24-.75-5.77-2.24c-1.53-1.49-2.29-3.38-2.29-5.66s.78-4.18,2.34-5.7c1.56-1.52,3.52-2.28,5.9-2.28s4.36.88,5.95,2.63l-1.64,1.8c-.73-.7-1.42-1.19-2.07-1.47-.65-.28-1.41-.42-2.29-.42-1.55,0-2.85.5-3.9,1.5-1.05,1-1.58,2.28-1.58,3.84s.52,2.86,1.57,3.9c1.04,1.05,2.28,1.57,3.72,1.57Z"/>
+        </svg>
+      </div>
+      <p class="footer-tag">Swiss PACSonWEB — Full cloud PACS<br>powered by Swisscom Health. Swiss Tier 4<br>security, zero installation, 50% lower TCO.<br>Contact: <a href="mailto:dr.ali.rahman@radiologycheck.com" style="color:rgba(255,255,255,.4);text-decoration:none">dr.ali.rahman@radiologycheck.com</a></p>
+      <div class="footer-sw">
+        <div class="fw-cross"></div>
+        <span>RadiologyCheck · Swiss PACSonWEB · Swiss Made</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#why">Why PACSonWEB</a>
+      <a href="#who">Who It's For</a>
+      <a href="#steps">3-Step Approach</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://www.radiologycheck.com">RadiologyCheck.com</a>
+      <a href="mailto:dr.ali.rahman@radiologycheck.com">dr.ali.rahman@radiologycheck.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RadiologyCheck GmbH · Bern, Switzerland · Swiss PACSonWEB · +41 79 528 18 75</p>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Imprint</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function playVideo() {
+  const vid = document.getElementById('rcVideo');
+  const overlay 
