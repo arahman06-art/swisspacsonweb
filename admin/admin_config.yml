@@ -1,0 +1,86 @@
+# Decap CMS Configuration for RadiologyCheck
+# Connects to Netlify Identity for login
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Media files (if doctor uploads a new photo)
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # DR. CHARIMO MSK PAGE
+  - name: "charimo"
+    label: "Dr. Charimo — MSK Page"
+    files:
+      - name: "charimo_content"
+        label: "Page Content"
+        file: "_data/charimo.json"
+        fields:
+          - { label: "Doctor Name", name: "name", widget: "string", default: "Dr. Jaled Charimo" }
+          - { label: "Title / Role", name: "title", widget: "string", default: "CMO & Head of MSK Section · RadiologyCheck · Inselspital Bern Trained" }
+          - { label: "Doctor Photo", name: "photo", widget: "image", hint: "Upload a professional headshot (square or portrait format)" }
+          - { label: "Hero Headline", name: "hero_headline", widget: "string", default: "MSK MRI. Subspecialist second opinion." }
+          - { label: "Hero Subtext", name: "hero_sub", widget: "text", default: "Independent musculoskeletal MRI interpretation by Dr. Jaled Charimo." }
+          - { label: "Bio (short — for hero card)", name: "bio_short", widget: "text" }
+          - { label: "Bio (full — for doctor section)", name: "bio_full", widget: "text" }
+          - { label: "Key Quote", name: "key_quote", widget: "text", hint: "The highlighted italic quote in the doctor section" }
+          - label: "Credentials / Diplomas"
+            name: "credentials"
+            widget: "list"
+            field: { label: "Credential", name: "item", widget: "string" }
+          - label: "Patient Review"
+            name: "review"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Patient Name", name: "name", widget: "string" }
+              - { label: "Patient Details", name: "details", widget: "string", hint: "e.g. Competitive Football Player, Houston TX, USA" }
+          - label: "Pricing"
+            name: "pricing"
+            widget: "object"
+            fields:
+              - label: "Standard Plan"
+                name: "standard"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", default: "Standard · Individual" }
+                  - { label: "Turnaround", name: "time", widget: "string", default: "Report within 24–48 hours" }
+              - label: "Express Plan"
+                name: "express"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", default: "Express · Individual" }
+                  - { label: "Turnaround", name: "time", widget: "string", default: "Priority report within 6–12 hours" }
+          - { label: "Contact Email", name: "email", widget: "string", default: "info@radiologycheck.com" }
+          - { label: "Upload Platform URL", name: "upload_url", widget: "string", default: "https://www.medicalexchange.ch/radiologycheck" }
+
+  # DR. PATAK PROSTATE PAGE
+  - name: "patak"
+    label: "Dr. Patak — Prostate MRI Page"
+    files:
+      - name: "patak_content"
+        label: "Page Content"
+        file: "_data/patak.json"
+        fields:
+          - { label: "Doctor Name", name: "name", widget: "string", default: "PD Dr. med. Michael Patak" }
+          - { label: "Title / Role", name: "title", widget: "string", default: "PI-RADS Specialist · Fellowship-Trained Prostate Expert · FMH Certified" }
+          - { label: "Doctor Photo", name: "photo", widget: "image" }
+          - { label: "Hero Headline", name: "hero_headline", widget: "string", default: "Prostate MRI. Expert second opinion within 24h." }
+          - { label: "Hero Subtext", name: "hero_sub", widget: "text" }
+          - { label: "Bio (full)", name: "bio_full", widget: "text" }
+          - { label: "Key Quote", name: "key_quote", widget: "text" }
+          - label: "Credentials"
+            name: "credentials"
+            widget: "list"
+            field: { label: "Credential", name: "item", widget: "string" }
+          - label: "Patient Review"
+            name: "review"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Patient Name", name: "name", widget: "string" }
+              - { label: "Patient Details", name: "details", widget: "string" }
+          - { label: "Contact Email", name: "email", widget: "string", default: "info@radiologycheck.com" }
+          - { label: "Upload Platform URL", name: "upload_url", widget: "string", default: "https://www.medicalexchange.ch/radiologycheck" }
